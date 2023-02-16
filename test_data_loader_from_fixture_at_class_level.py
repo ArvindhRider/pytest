@@ -1,8 +1,10 @@
 import pytest
 
+from test_mainLogger import Logger
+
 
 @pytest.mark.usefixtures("myData")
-class TestExample:
+class TestExample(Logger):
 
     def test_fixtureTest1(self):
         print("Testing a fixture fixtureTest1")
@@ -10,6 +12,8 @@ class TestExample:
 
     def test_fixtureTest2(self, myData):
         print("Testing a fixture fixtureTest2")
+        log = self.getLogs()
+        log.info(myData[1])
         print(myData)
 
 

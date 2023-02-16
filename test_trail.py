@@ -29,6 +29,18 @@
 # 2) under @pytest.fixture(scope="class")
 # 3) we have given that the scope is only at the class level
 # example clearing the browser cache before the browser is initialized
+# basically data driven and parametrization can be done withh return statements
+# when we pass multiple values we use params = [] inside the usefixtures and inside the method we use request instance
+# @pytest.fixture(params=[("chrome","Arvindh"), ("Firefox", "Rider"), ("Safari", "Tester")])
+# def crossBrowser(request):
+#     return request.param   this is like obj.value
+# Ultimately we have to get all these informations in a file so we use two things
+# 1) addhandler and
+# 2) file handler
+# file handler has to ability to create a new file for the logs
+# like
+# logging.filehandler('logfile.log')
+# this has to be passed to addhandler
 
 
 import pytest
@@ -43,6 +55,11 @@ def test_my_method(globalFixture):
 @pytest.mark.run
 def test_printing():
     print("I am a selected module test case")
+
+def test_crossbrowsing(crossBrowser):
+    print(crossBrowser)
+    print(crossBrowser[1])
+
 
 
 
